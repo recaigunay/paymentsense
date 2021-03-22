@@ -8,6 +8,6 @@ app.get('/*', (req, res) =>
     res.sendFile('index.html', {root: 'dist/paymentsense-coding-challenge-website/'}),
 );
 
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 4300);
 
 console.log('express server is listening ' + process.env.PORT)
