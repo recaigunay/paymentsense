@@ -1,0 +1,10 @@
+<div class="search-container">
+    <div class="ui transparent left icon large input">
+        <input class="search-input" type="text" [placeholder]="searchPlaceHolder" type="text" id="searchInput"
+            (keyup)='keyUp.next($event)' #myInput [(ngModel)]="searchInput">
+        <i class="search icon"></i>
+    </div>
+    <div>
+        <app-search-by (selectedSearchByEvent)="selectedSearchByEvent($event)"></app-search-by>
+    </div>
+</div>

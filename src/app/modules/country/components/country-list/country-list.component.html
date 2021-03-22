@@ -1,0 +1,36 @@
+<ng-container *ngIf="searchKey && !isLoading">
+    <i class="search icon"></i> Search results for
+    <div class="ui label"> {{ searchKey }} </div>
+
+    <h5 class="ui horizontal divider header">
+        <ng-container *ngIf="countrySearchList.length > 0; else noCountryFound">
+            <div class="ui circular large label">
+                {{ countrySearchList.length }}
+            </div> {{countrySearchList.length > 1 ? 'countries have been found.' : 'country has been found'}}
+        </ng-container>
+        <ng-template #noCountryFound>
+            <div class="ui floating orange message">
+                <p>No country has been found!</p>
+            </div>
+        </ng-template>
+
+    </h5>
+    <br>
+</ng-container>
+
+<div class="ui link cards">
+    <ng-container *ngFor='let card of countryList'>
+        <div class='card'>
+            <div class="image" (click)='navigateToDetail(card)'>
+                <img [src]="card?.flag">
+            </div>
+            <div class="content" (click)='navigateToDetail()'>
+                <div class="right floated meta" data-position="bottom center"></div>
+                <span class='card-name'> {{card?.name}}</span>
+                <div class="meta">
+
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

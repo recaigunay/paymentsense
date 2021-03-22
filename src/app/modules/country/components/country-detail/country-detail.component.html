@@ -1,0 +1,122 @@
+<div class="ui container" [ngClass]="'country-detail'">
+    <div class="ui segment">
+        <div class="ui items">
+            <div class="item">
+                <div class="image">
+                    <img [src]="selectedCountry?.flag">
+                </div>
+                <div class="content">
+                    <a class="header">{{ selectedCountry?.name}}</a>
+                    <div class="meta">
+                        <span>{{ selectedCountry?.region}}, {{ selectedCountry?.subregion}} </span>
+                    </div>
+                    <div class="description">
+                        <div class="ui relaxed divided list">
+                            <div class="item">
+                                <i class="large map marker alternate middle aligned icon"></i>
+                                <div class="content">
+                                    <span class="header">Capital</span>
+                                    <div class="description">{{ selectedCountry?.capital}}</div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="large money bill alternate outline middle aligned icon"></i>
+                                <div class="content">
+                                    <span class="header">Currencies</span>
+                                    <div class="description">
+                                        <span *ngFor='let currency of selectedCountry?.currencies'>
+                                            {{ currency?.code + '-' + currency?.name + ' (' + currency?.symbol +') ' }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="large language middle aligned icon"></i>
+                                <div class="content">
+                                    <span class="header">Languages</span>
+                                    <div class="description">
+                                        <span *ngFor='let language of selectedCountry?.languages'>
+                                            {{ language?.name }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="large hand paper outline middle aligned icon"></i>
+                                <div class="content">
+                                    <span class="header">Regional Blocs</span>
+                                    <div class="description">
+                                        <span *ngFor='let bloc of selectedCountry?.regionalBlocs'>
+                                            {{ bloc?.name }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="large long arrow alternate left middle aligned icon"></i>
+                                <div class="content">
+                                    <span class="header">Borders</span>
+                                    <div class="description">
+                                        <span *ngFor='let border of borderCountries; let i = index'>
+                                            {{ border?.alpha3Code + '-'+ border?.name + (i !== borderCountries.length-1 ? ',' : '') }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="large users middle aligned icon"></i>
+                                <div class="content">
+                                    <span class="header">Population</span>
+                                    <div class="description">{{ selectedCountry?.population | number }}</div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="large phone middle aligned icon"></i>
+                                <div class="content">
+                                    <span class="header">Calling Codes</span>
+                                    <div class="description">
+                                        <span *ngFor='let call of selectedCountry?.callingCodes'>
+                                            {{ call }} 
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item" *ngIf="selectedCountry?.latlng && selectedCountry?.latlng.length > 1">
+                                <i class="large users middle aligned icon"></i>
+                                <div class="content">
+                                    <span class="header">Lat - Long</span>
+                                    <div class="description">{{ 'Latitude: '+ selectedCountry?.latlng[0] + ', Longitude: '+selectedCountry?.latlng[1] }}
+                                        <button class="right floated ui labeled icon button" (click)="gotoDirection(selectedCountry?.latlng[0], selectedCountry?.latlng[1])" [ngClass]="'direction-button'">
+                                            <i class="location arrow icon"></i>
+                                            Direction
+                                        </button>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="large clock outline middle aligned icon"></i>
+                                <div class="content">
+                                    <span class="header">Time Zones</span>
+                                    <div class="description">
+                                        <span *ngFor='let time of selectedCountry?.timezones'>
+                                            {{ time }} 
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="extra">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <button class="ui bottom labeled icon button" (click)="goBack()" [ngClass]="'back-button'">
+        <i class="angle left icon"> </i> Back To Country List
+    </button>
+</div>

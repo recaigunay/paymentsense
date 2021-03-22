@@ -1,0 +1,19 @@
+<div class="search-by-items">
+    <span class="search-by-name"> {{ selectedSearchByText }}</span>
+    <i class="chevron down icon" [ngClass]="'search-by-icon'" (click)="clickSearchByOptions()"></i>
+</div>
+<div class="search-by-panel" [@openCloseSort]="isOpen ? 'open' : 'closed'" *ngIf="isSearchByEnabled">
+    <div class="action-buttons">
+        <i class="close icon" [ngClass]="'sort-icon'"  (click)="clickSearchByOptions()"></i>
+      </div>
+    <mat-radio-group class="radio-group" (change)="radioChange($event)"
+        [(ngModel)]="selectedSearchBy">
+        <div *ngFor="let option of options; let i = index">
+            <mat-radio-button class="radio-button" [value]="option?.value">
+                {{ option?.name}}
+            </mat-radio-button>
+            <ng-container *ngIf="i !== options.length-1"><div class="ui divider"></div></ng-container>
+        </div>
+    </mat-radio-group>
+
+</div>

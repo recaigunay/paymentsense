@@ -1,0 +1,27 @@
+<div class="pagenation-buttons">
+  <div>
+    <button class="ui large button" (click)="goto('first')">
+      <i class="step backward icon"> </i>
+    </button>
+  </div>
+  <div>
+    <button class="ui large button" (click)="goto('previous')">
+      <i class="chevron left icon"> </i>
+    </button>
+  </div>
+  <div>
+    <button class="ui icon large button">
+      {{ activePage }} / {{ totalPages === 0 ? 1 : totalPages }}
+    </button>
+  </div>
+  <div>
+    <button class="ui large button" (click)="goto('next')">
+      <i class="chevron right icon"> </i>
+    </button>
+  </div>
+  <div>
+    <button class="ui large button" (click)="goto('last')">
+      <i class="step forward icon"> </i>
+    </button>
+  </div>
+</div>

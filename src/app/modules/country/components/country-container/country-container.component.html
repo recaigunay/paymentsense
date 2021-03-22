@@ -1,0 +1,33 @@
+<div [ngClass]="'country-container'">
+    
+    <div class="ui pointing menu">
+
+      <a class="item" [routerLink]="['/countries']">
+        Countries
+      </a>
+      <div class="item">
+        <app-country-search (searchKeyChanged)="searchKeyChange($event)"></app-country-search>
+      </div>
+
+    </div>
+
+    <div class="ui segment">
+      <app-country-list 
+      [countryList]="countryListFiltered" 
+      [searchKey]="searchKey" 
+      [isLoading]="isLoading"
+      [countrySearchList]="countrySearchList"
+      (selectedCountryEvent)="selectedCountryEvent($event)"></app-country-list>
+    </div>
+
+    <div class="loading-shade" *ngIf="isLoading">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <div class="ui floating orange message" *ngIf="countryList?.length === 0 && !isLoading">
+      <p>No countries have been found !</p>
+    </div>
+
+    <app-country-pagination [activePage]="activePage" [totalPages]="totalPages" (pageClicked)="pageClicked($event)"></app-country-pagination>
+
+</div>
