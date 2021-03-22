@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { takeUntil } from 'rxjs/internal/operators/takeUntil';
 import { Subject } from 'rxjs/internal/Subject';
+import { BreakpointService } from 'src/app/services/breakpoint.service';
 import { SearchModel } from '../../models/searchModel';
 import { CountryService } from '../../services/country.service';
 
@@ -20,13 +21,16 @@ export class CountryContainerComponent implements OnInit {
   activePage = 1;
   pageSize = 20;
   searchKey = '';
+  breakPoint = null;
 
   constructor(private countryService: CountryService,
     private router: Router,
+    private breakPointService: BreakpointService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.initIsLoading();
+    this.getScreenSize();
     this.getAllCountries();
   }
 
@@ -68,6 +72,14 @@ export class CountryContainerComponent implements OnInit {
 
   selectedCountryEvent(event) {
     this.countryService.selectedCountry.next(event);
+  }
+
+  getScreenSize() {
+    this.breakPointService.getBreakPoint().pipe(takeUntil(this.unsubscription)).subscribe(result => {
+      if (result) {
+        this.breakPoint = result;
+      }
+    })
   }
 
   searchKeyChange(searchObject: SearchModel) {

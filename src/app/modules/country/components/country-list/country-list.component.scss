@@ -2,10 +2,29 @@
     margin: 10px  !important;
     width: 180px  !important;
     height: 200px  !important;
+
+    &.phone {
+        width: 250px !important;
+        height: 250px !important;
+    }
 }
 .image {
     width: 180px  !important;
     height: 120px  !important;
     background: #FFFFFF !important;
     cursor: pointer  !important;
+
+    &.phone {
+        width: 250px !important;
+        height: 200px !important;
+    }
+}
+
+
+.ui.cards {
+    &.phone {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
 }

@@ -1,8 +1,9 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { fromEvent } from 'rxjs/internal/observable/fromEvent';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { map } from 'rxjs/internal/operators/map';
 import { Subject } from 'rxjs/internal/Subject';
+import { BreakPointModel } from 'src/app/models/breakpoint-model';
 import { SearchModel } from '../../models/searchModel';
 
 @Component({
@@ -11,6 +12,7 @@ import { SearchModel } from '../../models/searchModel';
   styleUrls: ['./country-search.component.scss']
 })
 export class CountrySearchComponent implements OnInit {
+  @Input() breakPoint: BreakPointModel = null;
   @Output() searchKeyChanged : EventEmitter<SearchModel> = new EventEmitter();
   searchInput;
   searchPlaceHolder = '';

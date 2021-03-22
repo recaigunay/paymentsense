@@ -1,10 +1,31 @@
 .search-input {
     cursor: pointer;
     width: 500px;
+
+    &.tablet {
+        width: 300px;
+    }
+
+    &.phone {
+        width: 200px;
+    }
 }
 .search-container {
     width: 700px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
+
+    &.tablet {
+        width: 500px;
+        justify-content: space-around;
+    
+    }
+
+    &.phone {
+        width: 300px;
+        flex-direction: column;
+        justify-content: space-between;
+    
+    }
 }

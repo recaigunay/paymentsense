@@ -2,17 +2,18 @@
     
     <div class="ui pointing menu">
 
-      <a class="item" [routerLink]="['/countries']">
+      <a class="item" [routerLink]="['/countries']" *ngIf="!breakPoint?.isPhone">
         Countries
       </a>
       <div class="item">
-        <app-country-search (searchKeyChanged)="searchKeyChange($event)"></app-country-search>
+        <app-country-search (searchKeyChanged)="searchKeyChange($event)" [breakPoint]="breakPoint"></app-country-search>
       </div>
 
     </div>
 
     <div class="ui segment">
       <app-country-list 
+      [breakPoint]="breakPoint"
       [countryList]="countryListFiltered" 
       [searchKey]="searchKey" 
       [isLoading]="isLoading"
@@ -28,6 +29,6 @@
       <p>No countries have been found !</p>
     </div>
 
-    <app-country-pagination [activePage]="activePage" [totalPages]="totalPages" (pageClicked)="pageClicked($event)"></app-country-pagination>
+    <app-country-pagination [activePage]="activePage" [totalPages]="totalPages" (pageClicked)="pageClicked($event)" [breakPoint]="breakPoint"></app-country-pagination>
 
 </div>

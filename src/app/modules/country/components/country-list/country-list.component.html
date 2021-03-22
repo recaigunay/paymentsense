@@ -18,10 +18,10 @@
     <br>
 </ng-container>
 
-<div class="ui link cards">
+<div class="ui link cards" [ngClass]="breakPoint?.isPhone ? 'phone' : '' ">
     <ng-container *ngFor='let card of countryList'>
-        <div class='card'>
-            <div class="image" (click)='navigateToDetail(card)'>
+        <div class='card' [ngClass]="breakPoint?.isPhone ? 'phone' : '' ">
+            <div class="image" [ngClass]="breakPoint?.isPhone ? 'phone' : '' " (click)='navigateToDetail(card)'>
                 <img [src]="card?.flag">
             </div>
             <div class="content" (click)='navigateToDetail()'>

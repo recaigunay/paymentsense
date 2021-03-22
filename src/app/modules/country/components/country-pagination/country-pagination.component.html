@@ -1,26 +1,26 @@
 <div class="pagenation-buttons">
   <div>
-    <button class="ui large button" (click)="goto('first')">
+    <button class="ui button" (click)="goto('first')" [ngClass]="!breakPoint?.isPhone ? 'large' : '' ">
       <i class="step backward icon"> </i>
     </button>
   </div>
   <div>
-    <button class="ui large button" (click)="goto('previous')">
+    <button class="ui button" (click)="goto('previous')" [ngClass]="!breakPoint?.isPhone ? 'large' : '' ">
       <i class="chevron left icon"> </i>
     </button>
   </div>
   <div>
-    <button class="ui icon large button">
+    <button class="ui icon button" [ngClass]="!breakPoint?.isPhone ? 'large' : '' ">
       {{ activePage }} / {{ totalPages === 0 ? 1 : totalPages }}
     </button>
   </div>
   <div>
-    <button class="ui large button" (click)="goto('next')">
+    <button class="ui button" (click)="goto('next')" [ngClass]="!breakPoint?.isPhone ? 'large' : '' ">
       <i class="chevron right icon"> </i>
     </button>
   </div>
   <div>
-    <button class="ui large button" (click)="goto('last')">
+    <button class="ui button" (click)="goto('last')" [ngClass]="!breakPoint?.isPhone ? 'large' : '' ">
       <i class="step forward icon"> </i>
     </button>
   </div>

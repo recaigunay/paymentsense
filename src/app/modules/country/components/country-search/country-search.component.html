@@ -1,6 +1,6 @@
-<div class="search-container">
-    <div class="ui transparent left icon large input">
-        <input class="search-input" type="text" [placeholder]="searchPlaceHolder" type="text" id="searchInput"
+<div class="search-container"  [ngClass]="breakPoint?.isPhone ? 'phone' : breakPoint?.isTablet ? 'tablet': '' ">
+    <div class="ui transparent left icon input" [ngClass]="!breakPoint?.isPhone ? 'large' : '' ">
+        <input class="search-input" [ngClass]="breakPoint?.isPhone ? 'phone' : breakPoint?.isTablet ? 'tablet': '' " type="text" [placeholder]="searchPlaceHolder" type="text" id="searchInput"
             (keyup)='keyUp.next($event)' #myInput [(ngModel)]="searchInput">
         <i class="search icon"></i>
     </div>

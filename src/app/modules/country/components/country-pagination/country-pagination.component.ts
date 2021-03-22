@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BreakPointModel } from 'src/app/models/breakpoint-model';
 
 @Component({
   selector: 'app-country-pagination',
@@ -6,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./country-pagination.component.scss']
 })
 export class CountryPaginationComponent implements OnInit {
-
+  @Input() breakPoint: BreakPointModel = null;
   @Input() totalPages: number = 0;
   @Input() activePage: number = 1;
   @Output() pageClicked : EventEmitter<any> = new EventEmitter();

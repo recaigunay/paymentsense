@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { PaymentsenseCodingChallengeApiService } from './services';
 import { take } from 'rxjs/operators';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-regular-svg-icons';
+import { BreakpointService } from './services/breakpoint.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   public faThumbsUp = faThumbsUp;
   public faThumbsDown = faThumbsDown;
   public title = 'Paymentsense Coding Challenge!';
@@ -16,7 +17,7 @@ export class AppComponent {
   public paymentsenseCodingChallengeApiActiveIcon = this.faThumbsDown;
   public paymentsenseCodingChallengeApiActiveIconColour = 'red';
 
-  constructor(private paymentsenseCodingChallengeApiService: PaymentsenseCodingChallengeApiService) {
+  constructor(private paymentsenseCodingChallengeApiService: PaymentsenseCodingChallengeApiService, private breakPointService: BreakpointService) {
     paymentsenseCodingChallengeApiService.getHealth().pipe(take(1))
     .subscribe(
       apiHealth => {
@@ -33,5 +34,17 @@ export class AppComponent {
         this.paymentsenseCodingChallengeApiActiveIcon = this.faThumbsDown;
         this.paymentsenseCodingChallengeApiActiveIconColour = 'red';
       });
+  }
+  
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.setScreenSize();
+  }
+  ngOnInit() {
+    this.setScreenSize();
+  }
+  
+  setScreenSize() {
+    this.breakPointService.setBreakPoint();
   }
 }

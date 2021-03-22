@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BreakPointModel } from 'src/app/models/breakpoint-model';
 
 @Component({
   selector: 'app-country-list',
@@ -7,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./country-list.component.scss']
 })
 export class CountryListComponent implements OnInit {
+  @Input() breakPoint: BreakPointModel = null;
   @Input() countryList: any[] = [];
   @Input() countrySearchList: any[] = [];
   @Input() searchKey = '';
